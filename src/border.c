@@ -328,6 +328,7 @@ void border_init(struct border* border, int cid) {
   pthread_mutexattr_init(&mattr);
   pthread_mutexattr_settype(&mattr, PTHREAD_MUTEX_RECURSIVE);
   pthread_mutex_init(&border->mutex, &mattr);
+  pthread_mutexattr_destroy(&mattr);
   animation_init(&border->animation);
   if (cid) border->cid = cid;
   else border->cid = SLSMainConnectionID();
