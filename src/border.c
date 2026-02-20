@@ -352,6 +352,7 @@ void border_destroy(struct border* border) {
     if (!border->is_proxy && border->cid != SLSMainConnectionID())
       SLSReleaseConnection(border->cid);
     pthread_mutex_unlock(&border->mutex);
+    pthread_mutex_destroy(&border->mutex);
     free(border);
   });
 }
